@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valery Mwende Mwiti - Portfolio</title>
+    <!-- Use the Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --background-dark: #121A26;
+            --rich-gold: #C8A870;
+            --warm-copper: #D47A3A;
+            --deep-teal: #00778B;
+            --text-light: #E0E3E8;
+            --soft-white: rgba(255, 255, 255, 0.9);
+            --subtle-white: rgba(255, 255, 255, 0.6);
+            --card-background: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Container for main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-padding {
+          padding: 4rem 0;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-light);
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        /* General Card styles */
+        .card {
+            background: var(--card-background);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* --- Floating Particles --- */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(200, 168, 112, 0.2);
+            border-radius: 50%;
+            animation: float-and-fade 8s infinite ease-in-out;
+        }
+        .particle:nth-child(1) { width: 40px; height: 40px; top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 60px; height: 60px; top: 50%; left: 80%; animation-delay: 5s; }
+        .particle:nth-child(3) { width: 30px; height: 30px; top: 80%; left: 50%; animation-delay: 10s; }
+        .particle:nth-child(4) { width: 50px; height: 50px; top: 30%; left: 60%; animation-delay: 15s; }
+        .particle:nth-child(5) { width: 70px; height: 70px; top: 70%; left: 10%; animation-delay: 20s; }
+        .particle:nth-child(6) { width: 25px; height: 25px; top: 25%; left: 45%; animation-delay: 7s; }
+        .particle:nth-child(7) { width: 55px; height: 55px; top: 90%; left: 35%; animation-delay: 12s; }
+        .particle:nth-child(8) { width: 45px; height: 45px; top: 60%; left: 5%; animation-delay: 18s; }
+        .particle:nth-child(9) { width: 35px; height: 35px; top: 40%; left: 90%; animation-delay: 3s; }
+        .particle:nth-child(10) { width: 65px; height: 65px; top: 15%; left: 5%; animation-delay: 2s; }
+        .particle:nth-child(11) { width: 20px; height: 20px; top: 85%; left: 95%; animation-delay: 8s; }
+        .particle:nth-child(12) { width: 50px; height: 50px; top: 5%; left: 75%; animation-delay: 13s; }
+        .particle:nth-child(13) { width: 40px; height: 40px; top: 35%; left: 30%; animation-delay: 16s; }
+        .particle:nth-child(14) { width: 30px; height: 30px; top: 60%; left: 70%; animation-delay: 9s; }
+        .particle:nth-child(15) { width: 55px; height: 55px; top: 20%; left: 55%; animation-delay: 11s; }
+        .particle:nth-child(16) { width: 25px; height: 25px; top: 75%; left: 80%; animation-delay: 6s; }
+        .particle:nth-child(17) { width: 35px; height: 35px; top: 45%; left: 10%; animation-delay: 14s; }
+        .particle:nth-child(18) { width: 60px; height: 60px; top: 85%; left: 60%; animation-delay: 17s; }
+        .particle:nth-child(19) { width: 40px; height: 40px; top: 55%; left: 25%; animation-delay: 19s; }
+        .particle:nth-child(20) { width: 50px; height: 50px; top: 12%; left: 88%; animation-delay: 21s; }
+        .particle:nth-child(21) { width: 35px; height: 35px; top: 22%; left: 40%; animation-delay: 22s; }
+        .particle:nth-child(22) { width: 60px; height: 60px; top: 65%; left: 60%; animation-delay: 23s; }
+        .particle:nth-child(23) { width: 25px; height: 25px; top: 78%; left: 25%; animation-delay: 24s; }
+        .particle:nth-child(24) { width: 45px; height: 45px; top: 38%; left: 75%; animation-delay: 25s; }
+        .particle:nth-child(25) { width: 30px; height: 30px; top: 58%; left: 15%; animation-delay: 26s; }
+        .particle:nth-child(26) { width: 70px; height: 70px; top: 18%; left: 65%; animation-delay: 27s; }
+        .particle:nth-child(27) { width: 40px; height: 40px; top: 80%; left: 80%; animation-delay: 28s; }
+        .particle:nth-child(28) { width: 55px; height: 55px; top: 48%; left: 55%; animation-delay: 29s; }
+        .particle:nth-child(29) { width: 20px; height: 20px; top: 33%; left: 10%; animation-delay: 30s; }
+        .particle:nth-child(30) { width: 65px; height: 65px; top: 72%; left: 92%; animation-delay: 31s; }
+        .particle:nth-child(31) { width: 50px; height: 50px; top: 27%; left: 85%; animation-delay: 32s; }
+        .particle:nth-child(32) { width: 30px; height: 30px; top: 12%; left: 60%; animation-delay: 33s; }
+        .particle:nth-child(33) { width: 60px; height: 60px; top: 55%; left: 70%; animation-delay: 34s; }
+        .particle:nth-child(34) { width: 25px; height: 25px; top: 68%; left: 35%; animation-delay: 35s; }
+        .particle:nth-child(35) { width: 45px; height: 45px; top: 82%; left: 15%; animation-delay: 36s; }
+        .particle:nth-child(36) { width: 35px; height: 35px; top: 42%; left: 65%; animation-delay: 37s; }
+        .particle:nth-child(37) { width: 55px; height: 55px; top: 60%; left: 40%; animation-delay: 38s; }
+        .particle:nth-child(38) { width: 40px; height: 40px; top: 25%; left: 95%; animation-delay: 39s; }
+        .particle:nth-child(39) { width: 50px; height: 50px; top: 75%; left: 50%; animation-delay: 40s; }
+        .particle:nth-child(40) { width: 30px; height: 30px; top: 5%; left: 35%; animation-delay: 41s; }
+
+        @keyframes float-and-fade {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-50px) scale(1.1); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.5; }
+        }
+
+        /* --- Hero Section & Intro --- */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+          .hero-section {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+            align-items: flex-start;
+          }
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 600px;
+        }
+        @media (min-width: 1400px) {
+          .intro-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        .intro-text-block h3 {
+            font-size: 1.75rem;
+            color: var(--rich-gold);
+            margin-bottom: 1rem;
+        }
+        .intro-text-block h3 em {
+          font-style: normal;
+          color: var(--deep-teal);
+        }
+
+        .hero-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+          .hero-logo-container {
+            align-items: flex-start;
+            text-align: left;
+          }
+        }
+        .hero-logo-container img {
+            max-width: 600px;
+            height: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+        }
+        .hero-logo-container img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+        .hero-title-container {
+            margin-top: 2rem;
+        }
+        .hero-title-container h1 {
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            color: var(--rich-gold);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        /* --- About Me Section --- */
+        .about-me-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+          .about-me-content {
+            flex-direction: row;
+            text-align: left;
+            align-items: flex-start;
+          }
+        }
+        .about-me-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        .about-me-text h3 {
+            font-size: 1.75rem;
+            color: var(--rich-gold);
+            margin-bottom: 1rem;
+        }
+        .about-me-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 400px;
+        }
+        @media (max-width: 768px) {
+            .about-me-images {
+                max-width: 100%;
+            }
+        }
+        .about-me-images img {
+            width: 200%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+        }
+        .about-me-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* --- Education & Certifications --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .education-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        .education-card-icon {
+            font-size: 2.5rem;
+            color: var(--rich-gold);
+        }
+        .education-card-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .education-card-info p {
+            font-size: 0.875rem;
+            color: var(--subtle-white);
+        }
+
+        /* --- Skills & Interests --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .skills-list li {
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--card-background);
+            border-radius: 0.75rem;
+            list-style-type: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 3px solid var(--deep-teal);
+        }
+        .skills-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .interests-list li {
+            margin-bottom: 0.75rem;
+            list-style-type: disc;
+            margin-left: 1rem;
+        }
+
+        /* --- Work Experience --- */
+        .experience-vignette {
+            border-left: 4px solid var(--warm-copper);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--card-background);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        .experience-vignette:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .experience-vignette h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .experience-vignette p {
+            font-size: 0.875rem;
+            color: var(--subtle-white);
+            margin-bottom: 1rem;
+        }
+        .experience-details ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .easter-egg-container {
+            position: relative;
+            display: inline-block;
+        }
+        .easter-egg-tooltip {
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background: rgba(26, 44, 66, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--rich-gold);
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            white-space: nowrap;
+            z-index: 10;
+            border: 1px solid rgba(200, 168, 112, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .easter-egg-container:hover .easter-egg-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        /* --- Projects --- */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            background: var(--card-background);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 168, 150, 0.1), 
+                rgba(200, 168, 112, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        .project-card h3, .project-card p, .project-card span {
+            position: relative;
+            z-index: 2;
+        }
+        .project-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+        .project-card:hover .project-icon {
+            transform: scale(1.2) rotateY(15deg);
+        }
+
+        /* --- Contact Section & Footer --- */
+        .contact-box {
+            background: var(--card-background);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--card-border);
+            border-radius: 2rem;
+            padding: 4rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(0, 168, 150, 0.1),
+                transparent,
+                rgba(200, 168, 112, 0.1),
+                transparent
+            );
+            animation: rotate 30s linear infinite;
+            z-index: 1;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .form-group label {
+            margin-bottom: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rich-gold);
+            box-shadow: 0 0 20px rgba(200, 168, 112, 0.3);
+            transform: scale(1.02);
+        }
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: var(--subtle-white);
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, var(--rich-gold), var(--deep-teal));
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+        .social-icon:hover {
+            transform: scale(1.3) rotateY(15deg);
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+        }
+        .social-icon svg {
+            fill: var(--text-light);
+            transition: fill 0.3s ease;
+        }
+        .social-icon:hover svg {
+            fill: var(--rich-gold);
+        }
+
+        /* --- Download CV button --- */
+        .cv-download {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--deep-teal), var(--warm-copper));
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 3rem;
+        }
+        .cv-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .cv-download:hover::before {
+            left: 100%;
+        }
+        .cv-download:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+            .hero-title-container h1 {
+                font-size: 2.5rem;
+                white-space: normal;
+                line-height: 1.1;
+                margin-top: 1rem;
+            }
+            .contact-box {
+                padding: 2rem 1.5rem;
+            }
+            .contact-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .project-card {
+                padding: 2rem 1.5rem;
+            }
+            .hero-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .hero-logo-container {
+              order: -1; /* Puts the logo on top on mobile */
+            }
+            .about-me-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles background -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Main content container -->
+    <main class="container">
+
+        <!-- Section 1: The Intro - "From Currents to Code" -->
+        <section id="intro" class="hero-section section-padding">
+            <!-- Logo and Name (Left side on desktop, top on mobile) -->
+            <div class="hero-logo-container">
+                <!-- IMPORTANT: For this to work, the 'logo.jpg' image must be in the same directory as this HTML file. -->
+                <img src="LOGO3.png" alt="Valery Mwende Mwiti Logo">
+                <div class="hero-title-container">
+                    <h1>VALERY M. MWITI</h1>
+                </div>
+            </div>
+
+            <!-- Story blocks (Right side on desktop, bottom on mobile) -->
+            <div class="intro-grid">
+                <div class="intro-text-block">
+                    <h3>THE JOURNEY | <em>FROM CURRENTS TO CODE</em></h3>
+                    <p>Life rarely unfolds in perfect lines, and mine has been beautifully unconventional. What began as a pursuit in Marine Engineering transformed into a passionate embrace of Computer Science—a pivot that wasn't born of uncertainty, but of clarity. This unexpected path has become my greatest strength, weaving resilience into my DNA and sharpening my ability to navigate complex challenges with both precision and creativity.</p>
+                </div>
+                <div class="intro-text-block">
+                    <h3>THE MISSION | <em>MASTERY</em></h3>
+                    <p>I believe in the power of deliberate excellence. Every challenge I've faced has been a masterclass in strategic thinking and patient execution, teaching me that true mastery isn't just about what you build—it's about how you think, adapt, and persist. My approach is intentional: I don't just aim to meet standards, I aim to redefine them. Excellence isn't a destination; it's the only way I know how to move forward.</p>
+                </div>
+                <div class="intro-text-block">
+                    <h3>THE IMPACT | <em>TECHNOLOGY WITH HEART</em></h3>
+                    <p>At the intersection of innovation and empathy lies my deepest calling. I envision a world where technology doesn't just function—it understands, adapts, and includes. My passion for assistive technology isn't just professional; it's personal. I'm driven to create solutions that don't merely accommodate differences, but celebrate them, ensuring that every breakthrough opens doors rather than creating new barriers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: "A Glimpse Into My World" - About Me -->
+        <section id="about-me" class="section-padding">
+            <h2>A Glimpse Into My World</h2>
+            <div class="about-me-content">
+                <div class="about-me-text">
+                    <p style="font-size: 1.125rem; max-width: 42rem; margin: 0 auto 3rem; color: var(--soft-white);">
+                        Beyond the code and concepts, I'm a person driven by curiosity and a desire to make things better. My journey has been a tapestry of diverse experiences, from the disciplined world of marine operations to the creative frontier of digital development. I believe that every new skill I acquire and every new person I meet adds a unique thread to this tapestry, making my perspective richer and my solutions more empathetic.
+                    </p>
+                    <p style="font-size: 1.125rem; max-width: 42rem; margin: 0 auto; color: var(--soft-white);">
+                        When I'm not deep in a project, you can find me exploring new technologies, contributing to open-source communities, or simply enjoying the quiet moments that fuel my creative process. This portfolio is not just a showcase of my work; it's a reflection of my evolving story, my commitment to growth, and my hope to build a more inclusive digital future.
+                    </p>
+                </div>
+                <div class="about-me-images">
+                    <!-- IMPORTANT: The images 'image1.jpg' and 'image2.jpg' must be in the same directory as this HTML file. -->
+                    <img src="image1.jpg" alt="A personal photo of Valery Mwende Mwiti">
+                    <img src="image2.jpg" alt="Another personal photo of Valery Mwende Mwiti">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 3: "The Foundations" - Education & Certifications -->
+        <section id="education" class="section-padding">
+            <h2>The Foundations</h2>
+            <div class="grid-container">
+
+                <!-- Education Milestone: Mount Kenya University -->
+                <div class="card education-card">
+                    <span class="education-card-icon">📚</span>
+                    <div class="education-card-info">
+                        <h3>Mount Kenya University</h3>
+                        <p>September 2023 | Ongoing</p>
+                        <p>Bachelor of Science in Computer Science</p>
+                    </div>
+                </div>
+
+                <!-- Education Milestone: St. Mary's High School -->
+                <div class="card education-card">
+                    <span class="education-card-icon">🎓</span>
+                    <div class="education-card-info">
+                        <h3>St. Mary's High School</h3>
+                        <p>2015 – 2018</p>
+                        <p>KCSE – B+ (70 points)</p>
+                    </div>
+                </div>
+
+                <!-- Certification: Cisco Networking Academy -->
+                <div class="card education-card">
+                    <span class="education-card-icon" style="color: var(--deep-teal);">🏅</span>
+                    <div class="education-card-info">
+                        <h3>Cisco Networking Academy</h3>
+                        <p>Data Analytics Essentials</p>
+                    </div>
+                </div>
+                
+                <!-- Certification: Python Essentials -->
+                <div class="card education-card">
+                    <span class="education-card-icon" style="color: var(--deep-teal);">🏅</span>
+                    <div class="education-card-info">
+                        <h3>Cisco Networking Academy</h3>
+                        <p>Python Essentials</p>
+                    </div>
+                </div>
+                <!-- Certification: PLP -->
+                <div class="card education-card">
+                    <span class="education-card-icon" style="color: var(--deep-teal);">🏅</span>
+                    <div class="education-card-info">
+                        <h3>Power Learn Project</h3>
+                        <p>Software Engineering | Ongoing</p>
+                    </div>
+                </div>
+                <!-- Certification: Bunimedia -->
+                <div class="card education-card">
+                    <span class="education-card-icon" style="color: var(--deep-teal);">🏅</span>
+                    <div class="education-card-info">
+                        <h3>Bunimedia</h3>
+                        <p>Whiteboard Animation | Ongoing</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Enhanced Downloadable CV Link -->
+            <div style="text-align: center;">
+                <!-- IMPORTANT: For this to work, the 'valery_mwende_mwiti_cv.pdf' file must be in the same directory as this HTML file. -->
+                <a href="Valery_Mwende_Mwiti_OFFICIAL_CV.pdf" download class="cv-download">
+                    <i class="fas fa-download"></i> Download My CV
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 4: "Skills & Interests" -->
+        <section id="skills-interests" class="section-padding">
+            <h2>Skills & Interests</h2>
+            <div class="skills-grid">
+                <!-- Programming Languages Card -->
+                <div class="card">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Programming Languages</h3>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                        <li>HTML & CSS</li>
+                    </ul>
+                </div>
+                <!-- Interests Card -->
+                <div class="card">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Interests</h3>
+                    <ul class="interests-list">
+                        <li>Web Development: Exploring modern frameworks and best practices.</li>
+                        <li>Assistive Technology: Creating inclusive digital solutions.</li>
+                        <li>Tech Innovations: Keeping up with emerging trends in technology.</li>
+                        <li>Data Analysis: Turning data into meaningful insights.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: "Forging Skills" - Work Experience -->
+        <section id="experience" class="section-padding">
+            <h2>Forging Skills</h2>
+            <div class="experience-list">
+
+                <!-- Work Experience Item -->
+                <div class="experience-vignette">
+                    <h3>Senior Executive Assistant – Sylvia's Traders Lounge</h3>
+                    <p>August 2024 – Present</p>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Supporting CEO Sylvia Muchai, immersing in operations and strategic objectives.</li>
+                            <li>Applying organizational skills to streamline executive support functions.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Work Experience Item -->
+                <div class="experience-vignette" style="border-left-color: var(--rich-gold);">
+                    <h3>Social Media Manager – Desafío Alimentario</h3>
+                    <p>December 2024 – May 2025</p>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Designed and implemented marketing strategies for sustainable food solutions.</li>
+                            <li>Contributed to digital campaigns and outreach, increasing engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Work Experience Item with "Easter Egg" -->
+                <div class="experience-vignette">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h3>Cashier – 1759 Spiral Lounge</h3>
+                        <div class="easter-egg-container">
+                            <span style="color: var(--rich-gold);">⏱️</span>
+                            <span class="easter-egg-tooltip">Expert in nocturnal operations</span>
+                        </div>
+                    </div>
+                    <p>September 2021 – March 2025</p>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Maintained accurate financial records and delivered exceptional customer service.</li>
+                            <li>Balanced sales reports and resolved customer issues efficiently.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 6: "Building Tomorrow" - Projects -->
+        <section id="projects" class="section-padding">
+            <h2 style="margin-bottom: 3rem;">Building Tomorrow</h2>
+            <p style="text-align: center; font-size: 1.125rem; max-width: 42rem; margin: 0 auto 3rem; color: var(--soft-white);">My passion for assistive technology drives me to build solutions that matter. Here are some of my key projects focused on innovation and accessibility.</p>
+            <div class="grid-container">
+
+                <!-- Project Card: SENSI -->
+                <a href="https://github.com/MWENDE-CURTIS/SENSI.git" target="_blank" class="project-card">
+                    <span class="project-icon">👂</span>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">SENSI</h3>
+                    <p style="color: var(--subtle-white); margin-bottom: 1rem;">Assistive Wearable Technology for environmental awareness.</p>
+                    <span style="color: var(--rich-gold); font-weight: 600;">View Project →</span>
+                </a>
+
+                <!-- Project Card: SAVVY -->
+                <a href="https://github.com/MWENDE-CURTIS/SAVVY.git" target="_blank" class="project-card">
+                    <span class="project-icon">🍽️</span>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">SAVVY</h3>
+                    <p style="color: var(--subtle-white); margin-bottom: 1rem;">Smart Meal Planning & Delivery Platform.</p>
+                    <span style="color: var(--rich-gold); font-weight: 600;">View Project →</span>
+                </a>
+
+                <!-- Project Card: WWAZI -->
+                <a href="https://github.com/MWENDE-CURTIS/WWAZI.git" target="_blank" class="project-card">
+                    <span class="project-icon">🔎</span>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">WWAZI</h3>
+                    <p style="color: var(--subtle-white); margin-bottom: 1rem;">Authentic business review platform for Kenya.</p>
+                    <span style="color: var(--rich-gold); font-weight: 600;">View Project →</span>
+                </a>
+                
+                <!-- Project Card: Branding Agency -->
+                <a href="https://www.canva.com/design/DAGrl-W-eIg/NwFaGuunCqnr6Mq_UP-YyQ/edit?utm_content=DAGrl-W-eIg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="project-card">
+                    <span class="project-icon">🎨</span>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Branding Agency Mock-up</h3>
+                    <p style="color: var(--subtle-white); margin-bottom: 1rem;">Canva-based website for a branding agency.</p>
+                    <span style="color: var(--rich-gold); font-weight: 600;">View Project →</span>
+                </a>
+                <!-- Project Card: Animation -->
+                <a href="Valery Mwiti_Mango File_30-07-2025.ac" target="_blank" class="project-card">
+                    <span class="project-icon">🎨</span>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">KCB Bank Ad Mock-up</h3>
+                    <p style="color: var(--subtle-white); margin-bottom: 1rem;">A whiteboard animated mock-up of KCB Bank ad.</p>
+                    <span style="color: var(--rich-gold); font-weight: 600;">View Project →</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Section 7: "Contact Me" - This now serves as the footer -->
+    <footer id="contact" class="section-padding">
+        <div class="contact-box">
+            <div class="contact-content">
+                <h2 style="color: white; margin-bottom: 1rem;">Contact Me</h2>
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; color: var(--soft-white);">Feel free to reach out! I'm always open to discussing new projects, creative ideas, or opportunities.</p>
+                <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem; color: var(--rich-gold);">
+                    Email: <a href="mailto:YOUR_EMAIL@EXAMPLE.COM" style="color: inherit; text-decoration: none;">mwende.curtis@gmail.com</a>
+                </div>
+                
+                <form action="https://docs.google.com/forms/d/e/1FAIpQLScyzluaunFJtzUOF310YPKfeiFlFV_Ebuec4l8y-IhcAbG4oQ/viewform?usp=sharing&ouid=102212732882258814176" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project or idea..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div class="contact-links" style="margin-top: 3rem;">
+                    <!-- Social Icon: LinkedIn -->
+                    <a href="https://www.linkedin.com/in/valery-mwiti-915689369/" target="_blank" class="social-icon" aria-label="LinkedIn Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.763s.784-1.763 1.75-1.763 1.75.79 1.75 1.763-.783 1.763-1.75 1.763zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <!-- Social Icon: GitHub -->
+                    <a href="https://github.com/MWENDE-CURTIS" target="_blank" class="social-icon" aria-label="GitHub Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.465-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.771.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.684.8.576 4.765-1.589 8.197-6.091 8.197-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
